@@ -39,9 +39,9 @@ def filter_corpus(corpus:list[dict], pattern:str) -> list[dict]:
     matcher = parse_gitignore(filename,base_dir='./')
     new_corpus = []
     for c in corpus:
-        logger.debug(f"Paths for item: {c['paths']}")
+        logger.info(f"Paths for item: {c['paths']}")
         match_results = [matcher(p) for p in c['paths']]
-        logger.debug(f"Match results: {match_results}")
+        logger.info(f"Match results: {match_results}")
         if not any(match_results):
             new_corpus.append(c)
     os.remove(filename)
